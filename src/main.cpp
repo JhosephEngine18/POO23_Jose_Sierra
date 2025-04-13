@@ -65,7 +65,7 @@ int main()
     Account.Deposit(1200);
     if (Account.GetBalance() <= 0)
     {
-        cout << "You cant withdraw";
+        cout << "You dont have any money inside";
     }
     else if (Account.GetAccountType() == "CheckBook")
     {
@@ -73,12 +73,25 @@ int main()
     }
     else
     {
-        Account.withdraw(500);
+        float SubtractMoney = 500;
+        Account.withdraw(SubtractMoney);
         Account.Deposit(200);
-        Account.withdraw(500);
+        SubtractMoney = 5000;
+        if (SubtractMoney > Account.GetBalance())
+        {
+            cout << "You cant withdraw that amount of money\n";   
+        }
+        else
+        {
+            Account.withdraw(SubtractMoney);
         cout << "Your current balance is: " << Account.GetBalance() << "\n";   
         cout << "The name of the owner is: " << Account.GetOwner() << "\n";   
         cout << "The Account type is: " << Account.GetAccountType() << "\n";
+        }
+        cout << "Your current balance is: " << Account.GetBalance() << "\n";   
+        cout << "The name of the owner is: " << Account.GetOwner() << "\n";   
+        cout << "The Account type is: " << Account.GetAccountType() << "\n";
+        
     }
     
 }
